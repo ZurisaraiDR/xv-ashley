@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es-MX">
+<head>
+  <meta charset="utf-8">
+  <title>Share card · XV Ashley</title>
+  <!--
+    1200×630 share card (Open Graph, https://ogp.me/). Rendered to assets/og.jpg by tools/render-og.ps1;
+    same palette and fonts as the invitation.
+  -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@500;600&display=block">
+  <style>
+    :root { --paper: #fbf6ec; --ink: #1d2b4a; --ink-soft: #4b5a78; --sky: #dbe9f6; --sky-deep: #a9c8ea;
+            --blush: #f6dedc; --butter: #f7ecca; --gold: #c9a14a; --gold-soft: #ecdaa8; --gold-ink: #7d5a17; }
+    * { box-sizing: border-box; margin: 0; }
+    html, body { width: 1200px; height: 630px; overflow: hidden; }
+    body { position: relative; background: var(--paper); color: var(--ink); font-family: 'Quicksand', sans-serif; }
+
+    .rays { position: absolute; top: 50%; left: 70%; width: 1300px; aspect-ratio: 1; translate: -50% -50%;
+            background: repeating-conic-gradient(rgb(219 233 246 / 0.85) 0deg 7deg, transparent 7deg 20deg);
+            mask: radial-gradient(circle, #000 18%, transparent 62%); }
+    .garland { position: absolute; top: 0; left: 0; width: 1200px; stroke: var(--ink); stroke-width: 1.4; }
+
+    .text { position: absolute; left: 90px; top: 150px; width: 600px; }
+    .kicker { font-size: 26px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-ink); }
+    .name { margin-top: 6px; font-family: 'Great Vibes', cursive; font-size: 190px; line-height: 1.05; }
+    .second { font-size: 40px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold-ink); }
+    .date { display: flex; align-items: center; gap: 16px; margin-top: 34px; font-size: 32px; font-weight: 600; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); }
+
+    .arch { position: absolute; right: 120px; bottom: 0; width: 330px; height: 470px;
+            border-radius: 999px 999px 0 0; background: var(--sky); box-shadow: inset 0 0 0 3px var(--ink); }
+    .arch img { position: absolute; left: 50%; bottom: 0; width: 360px; translate: -50% 0;
+                filter: drop-shadow(0 8px 14px rgb(29 43 74 / 0.15)); }
+    .xv { position: absolute; right: 60px; top: 70px; font-family: 'Great Vibes', cursive; font-size: 300px;
+          line-height: 1; color: transparent; -webkit-text-stroke: 2px var(--gold); opacity: 0.55; }
+    .sparkle { position: absolute; width: 46px; height: 46px; stroke: var(--ink); stroke-width: 2.2; fill: var(--gold-soft); }
+  </style>
+</head>
+<body>
+  <div class="rays"></div>
+  <svg class="garland" viewBox="0 0 1200 110" aria-hidden="true">
+    <path d="M0 10Q600 120 1200 10" fill="none"/>
+    <path d="M70 27 106 27 88 66Z" fill="#a9c8ea"/>  <path d="M190 45 226 45 208 84Z" fill="#f6dedc"/>
+    <path d="M310 58 346 58 328 97Z" fill="#f7ecca"/> <path d="M430 66 466 66 448 105Z" fill="#ecdaa8"/>
+    <path d="M550 69 586 69 568 108Z" fill="#dbe9f6"/> <path d="M670 68 706 68 688 107Z" fill="#f6dedc"/>
+    <path d="M790 63 826 63 808 102Z" fill="#f7ecca"/> <path d="M910 53 946 53 928 92Z" fill="#a9c8ea"/>
+    <path d="M1030 39 1066 39 1048 78Z" fill="#ecdaa8"/> <path d="M1150 21 1186 21 1168 60Z" fill="#f6dedc"/>
+  </svg>
+  <span class="xv" aria-hidden="true">XV</span>
+  <div class="arch"><img src="../assets/fotos/rizos.webp" alt=""></div>
+  <svg class="sparkle" style="left: 660px; top: 150px" viewBox="0 0 40 40"><path d="M20 3C21.6 14 26 18.4 37 20 26 21.6 21.6 26 20 37 18.4 26 14 21.6 3 20 14 18.4 18.4 14 20 3Z"/></svg>
+  <svg class="sparkle" style="left: 1110px; top: 520px; width: 32px; height: 32px" viewBox="0 0 40 40"><path d="M20 3C21.6 14 26 18.4 37 20 26 21.6 21.6 26 20 37 18.4 26 14 21.6 3 20 14 18.4 18.4 14 20 3Z"/></svg>
+
+  <div class="text">
+    <p class="kicker">Te invito a mis XV</p>
+    <p class="name">Ashley</p>
+    <p class="second">Alejandra</p>
+    <p class="date"><span>Sábado</span><span class="dot"></span><span>19 · 12 · 2026</span><span class="dot"></span><span>6:00 PM</span></p>
+  </div>
+</body>
+</html>

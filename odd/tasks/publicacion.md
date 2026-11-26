@@ -16,3 +16,4 @@ status: in-progress
 - Public repo https://github.com/ZurisaraiDR/xv-ashley (gh logged in as ZurisaraiDR); `.gitignore` excludes `.claude/` and `skills-lock.json`; `.nojekyll` added. Commit `8d0b102` (Conventional Commits, no AI attribution per owner rules).
 - GitHub Pages enabled from `main` / root via REST API; first deploy run succeeded. Live: https://zurisaraidr.github.io/xv-ashley/ (index, CSS, JS, WAV → 200). Apps Script `doGet` answers from the github.io origin (CORS OK); no test RSVP sent from the live site.
 - Pending: Open Graph preview image + `og:url` for a nicer WhatsApp card. Future changes need commit + push to `main` (Pages redeploys automatically).
+- Share card: `tools/og-card.html` rendered by `tools/render-og.ps1` (Edge headless, separate profile) to `assets/og.jpg` (1200×630, 95 KB). Open Graph + `twitter:card` tags with absolute URLs added to `index.html`.
