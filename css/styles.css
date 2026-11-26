@@ -52,6 +52,13 @@ body {
   font-size: 1.0625rem;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+}
+
+/*
+ * Mobile browsers ignore horizontal clipping set on html/body and widen the page instead, so the
+ * safety net for anything an animation pushes sideways lives on <main>.
+ */
+main {
   overflow-x: clip;
 }
 
@@ -683,6 +690,8 @@ ol {
 
 .thanks {
   padding-block: var(--section-space);
+  /* The notes start 60px to the side before sliding in; they must not widen the page. */
+  overflow-x: clip;
 }
 
 .thanks__stack {
@@ -1246,6 +1255,116 @@ ol {
 }
 
 /* ---------- Wider screens ---------- */
+
+/* ---------- Narrow phones (iPhone SE 1st gen, small Androids) ---------- */
+
+@media (max-width: 359px) {
+  .hero__surnames {
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+
+  .hero__surnames::before,
+  .hero__surnames::after {
+    width: 0.9rem;
+  }
+
+  .hero__date {
+    gap: 0.25rem 0.4rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.02em;
+  }
+
+  /* No room beside the name: these two doodles would sit on the text. */
+  .hero__d3,
+  .hero__d4 {
+    display: none;
+  }
+
+  .kicker {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+  }
+
+  /* Side by side, each answer would break onto two lines inside its pill. */
+  .choice {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Short screens (small phones, phones turned sideways) ---------- */
+
+@media (max-height: 620px) {
+  .hero {
+    padding-block: 3.75rem 1.5rem;
+  }
+
+  .hero__photo {
+    width: min(60vw, 15rem, 30svh);
+    margin-top: 1.5rem;
+  }
+
+  .hero__title {
+    margin-top: 1rem;
+  }
+
+  .hero__date {
+    margin-top: 0.75rem;
+  }
+}
+
+/* ---------- Phone turned sideways: photo left, name and date right ---------- */
+
+@media (orientation: landscape) and (max-height: 620px) {
+  .garland {
+    width: min(60%, 26rem);
+  }
+
+  .hero__inner {
+    grid-template-columns: auto 1fr;
+    column-gap: 2.5rem;
+    align-items: center;
+    justify-items: start;
+    width: min(100% - 2 * var(--gutter), 46rem);
+    text-align: left;
+  }
+
+  .hero__inner > * {
+    grid-column: 2;
+  }
+
+  .hero__photo {
+    grid-column: 1;
+    grid-row: 1 / span 3;
+    width: 44svh;
+    margin-top: 0;
+  }
+
+  .hand-note {
+    left: -1rem;
+    font-size: 1rem;
+  }
+
+  .hero__title {
+    justify-items: start;
+    margin-top: 0.25rem;
+  }
+
+  .hero__first {
+    font-size: 24svh;
+  }
+
+  .hero__surnames,
+  .hero__date {
+    justify-content: flex-start;
+  }
+
+  .hero__surnames::before {
+    display: none;
+  }
+}
 
 @media (min-width: 768px) {
   .wrap {
