@@ -1,0 +1,9 @@
+{
+  "name": "xv-ashley",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"tests/*.test.js\"",
+    "start": "python tools/serve.py 8090"
+  }
+}
