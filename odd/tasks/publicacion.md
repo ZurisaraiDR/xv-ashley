@@ -1,5 +1,5 @@
 ---
-status: in-progress
+status: done
 ---
 
 # Publicación en internet
@@ -17,3 +17,5 @@ status: in-progress
 - GitHub Pages enabled from `main` / root via REST API; first deploy run succeeded. Live: https://zurisaraidr.github.io/xv-ashley/ (index, CSS, JS, WAV → 200). Apps Script `doGet` answers from the github.io origin (CORS OK); no test RSVP sent from the live site.
 - Pending: Open Graph preview image + `og:url` for a nicer WhatsApp card. Future changes need commit + push to `main` (Pages redeploys automatically).
 - Share card: `tools/og-card.html` rendered by `tools/render-og.ps1` (Edge headless, separate profile) to `assets/og.jpg` (1200×630, 95 KB). Open Graph + `twitter:card` tags with absolute URLs added to `index.html`.
+- Verified live after deploy `760c3a1`: `assets/og.jpg` → 200 image/jpeg; `og:image` present in the published HTML. WhatsApp caches previews per URL: links already shared before this deploy may keep the old (text-only) preview.
+- Closed. Remaining open work lives in `tasks/contenido-final.md` (owner's sticker files).
