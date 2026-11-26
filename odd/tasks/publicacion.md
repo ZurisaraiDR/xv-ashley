@@ -26,3 +26,9 @@ status: done
 - Bug fixed: ~60 px horizontal scroll on every phone, caused by the thank-you notes' pre-animation offset (x ±60). Mobile browsers ignore clipping on body, so `overflow-x: clip` moved to `main` and added to `.thanks`.
 - Narrow phones (<360 px): surnames and date on one line, kicker spacing reduced, two doodles hidden, RSVP answers stacked. Short screens (≤620 px tall): compact cover. Landscape phones: two-column cover (photo left, name and date right).
 - Result: 0 issues at every size and moment; the cover fits one screen everywhere.
+
+### 2026-11-26 — time change and phone report
+
+- Start time changed to 7:00 PM everywhere (cover, date section, place text, og:description, `PARTY.startsAt` → 2026-12-19T19:00-05:00 for countdown and .ics) and the share card re-rendered.
+- Owner's phone screenshots showed the ~60 px side strip: the live CSS fix had been published at 14:58 Cancún, the same minute as the screenshot, and GitHub Pages serves `Cache-Control: max-age=600`, so the phone still had the old CSS. Verified the current code at 360×800, 384×832 and 412×915: scrollWidth = clientWidth at top, album mid-pin and bottom.
+- Statement text now sits above the rising balloons (z-index), so a balloon never covers the words.

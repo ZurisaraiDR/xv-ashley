@@ -535,6 +535,8 @@ ol {
 
 .statement .wrap {
   position: relative;
+  /* The rising balloons pass behind the words, never over them. */
+  z-index: 1;
 }
 
 .statement__text {

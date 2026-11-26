@@ -3,8 +3,8 @@
 export const PARTY = {
   uid: 'xv-ashley-2026-12-19@invitacion',
   title: 'XV de Ashley Alejandra',
-  // 19 Dec 2026, 6:00 PM in Cancún (America/Cancun is UTC−5 all year, no daylight saving).
-  startsAt: '2026-12-19T18:00:00-05:00',
+  // 19 Dec 2026, 7:00 PM in Cancún (America/Cancun is UTC−5 all year, no daylight saving).
+  startsAt: '2026-12-19T19:00:00-05:00',
   location: 'Cancún, Quintana Roo',
   description: 'Te espero para celebrar mis XV años. ¡Confirma tu asistencia en la invitación!',
   mapsUrl: 'https://maps.app.goo.gl/pPBcRnayRJNArMoY9',

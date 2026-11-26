@@ -10,7 +10,7 @@ status: done
 - Sections, top to bottom: envelope intro → cover (baby photo, "aún soy esa bebé") → childhood album (horizontal pinned gallery) → thank-you cards (parents, family, godparents, friends) → date + live countdown + add-to-calendar → place (map, directions) → RSVP form → closing.
 - Event data lives in one file (`js/config.js`):
   - Name: Ashley Alejandra Delgado Rodriguez
-  - Date: 19 Dec 2026, from 18:00 (America/Cancun, UTC−5)
+  - Date: 19 Dec 2026, from 19:00 (America/Cancun, UTC−5) — changed from 18:00 on 2026-11-26
   - Location: 21.188881, -86.853264 — https://maps.app.goo.gl/pPBcRnayRJNArMoY9
 - Theme: Peanuts-like hand lettering, blue + gold + pastels, feminine, calm, not childish. No drawn copyrighted characters; original doodles plus slots for the owner's own illustrations.
 - Motion: GSAP + ScrollTrigger; everything visible and static under `prefers-reduced-motion`.
