@@ -76,3 +76,41 @@ test('submitRsvp fails on an HTTP error', async (t) => {
 
   await assert.rejects(submitRsvp('https://script.example/exec', VALID_YES));
 });
+
+test('a name can only have letters, spaces, apostrophes, hyphens and dots', () => {
+  assert.equal(validateRsvp({ ...VALID_YES, name: "María José O'Neil-Pérez" }).isValid, true);
+  for (const name of ['Juan2', '12345', 'Ana_<script>', 'Luis!', 'Ana@mail.com']) {
+    const result = validateRsvp({ ...VALID_YES, name });
+    assert.equal(result.isValid, false, `"${name}" should fail`);
+    assert.ok(result.errors.name);
+  }
+});
+
+test('a name with a blocked word is rejected', () => {
+  for (const name of ['Pene', 'Juan Pito', 'P3ne']) {
+    const result = validateRsvp({ ...VALID_YES, name });
+    assert.equal(result.isValid, false, `"${name}" should fail`);
+    assert.ok(result.errors.name);
+  }
+});
+
+test('a message with a blocked word, a link or angle brackets is rejected', () => {
+  for (const message of ['eres un pendejo', 'visita www.spam.com', 'mira https://x.io', 'hola <b>tú</b>', 'promo en gana.xyz']) {
+    const result = validateRsvp({ ...VALID_YES, message });
+    assert.equal(result.isValid, false, `"${message}" should fail`);
+    assert.ok(result.errors.message);
+  }
+});
+
+test('a friendly message with numbers and emoji is fine', () => {
+  const result = validateRsvp({ ...VALID_YES, message: '¡Felices 15! 🎉 Te queremos mucho.' });
+
+  assert.equal(result.isValid, true);
+});
+
+test('invisible characters are removed before checking', () => {
+  const result = validateRsvp({ ...VALID_YES, name: 'Pe​ne' });
+
+  assert.equal(result.isValid, false);
+  assert.equal(validateRsvp({ ...VALID_YES, name: 'Lu​cía' }).data.name, 'Lucía');
+});

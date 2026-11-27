@@ -6,9 +6,10 @@ import vm from 'node:vm';
 // Code.gs is plain Apps Script (no modules), so it is evaluated in a sandbox
 // and only its pure functions are exercised here.
 const source = readFileSync(new URL('../apps-script/Code.gs', import.meta.url), 'utf8');
-const { parseRsvp, toRow, sanitizeCell } = vm.runInNewContext(
-  `${source}\n;({ parseRsvp, toRow, sanitizeCell })`,
+const server = vm.runInNewContext(
+  `${source}\n;({ parseRsvp, toRow, sanitizeCell, BLOCKED_WORDS, BLOCKED_STEMS })`,
 );
+const { parseRsvp, toRow, sanitizeCell } = server;
 
 const VALID_YES = { name: ' Tía Lupita ', attending: 'si', guests: '3', message: ' ¡Ahí estaremos! ' };
 
@@ -56,4 +57,30 @@ test('neutralizes text that a spreadsheet would run as a formula', () => {
     assert.equal(sanitizeCell(formula), `'${formula}`);
   }
   assert.equal(sanitizeCell('Hola = adiós'), 'Hola = adiós');
+});
+
+test('the server rejects blocked words, digits in names and links in messages', () => {
+  const rejected = [
+    { ...VALID_YES, name: 'Pene' },
+    { ...VALID_YES, name: 'P3ne' },
+    { ...VALID_YES, name: 'Juan2' },
+    { ...VALID_YES, message: 'pura mierda' },
+    { ...VALID_YES, message: 'entra a www.spam.com' },
+    { ...VALID_YES, message: '<img src=x onerror=alert(1)>' },
+  ];
+  for (const params of rejected) {
+    assert.equal(parseRsvp(params).isValid, false, JSON.stringify(params));
+  }
+  assert.equal(parseRsvp({ ...VALID_YES, name: 'Penélope Vergara' }).isValid, true);
+});
+
+test('the server neutralizes cells starting with a tab or carriage return too', () => {
+  assert.equal(sanitizeCell('\t=1+1'), "'\t=1+1");
+  assert.equal(sanitizeCell('\r=1+1'), "'\r=1+1");
+});
+
+test('the page and the server block exactly the same words', async () => {
+  const page = await import('../js/moderation.js');
+  assert.deepEqual([...server.BLOCKED_WORDS], [...page.BLOCKED_WORDS]);
+  assert.deepEqual([...server.BLOCKED_STEMS], [...page.BLOCKED_STEMS]);
 });

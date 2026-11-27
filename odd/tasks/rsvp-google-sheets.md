@@ -25,3 +25,9 @@ status: done
 - GET /exec → `{"ok":true,"message":"Confirmaciones listas"}` (HTTP 200).
 - Real POST from the page at http://localhost:5500 (CORS through the script.googleusercontent.com redirect works): server answered `ok: true` and the thank-you card showed. Test row "Prueba (bórrame)" with message `=1+1 prueba de seguridad`: the owner checks it is stored as text (leading apostrophe) and deletes the row.
 - Next: objective 3, final content (`tasks/contenido-final.md`).
+
+### 2026-11-26 — form protection
+
+- Page (`js/moderation.js`, `js/rsvp.js`): Spanish/English blocklist for name and message (whole words + unambiguous stems), normalized against accents (ñ kept), digits for letters, repeated letters and letters split by dots/dashes/spaces; names letters-only (accents, apostrophe, hyphen, dot); messages without links or `<`/`>`; zero-width and control characters stripped. Rendering already used `textContent` only (no XSS path).
+- Server (`apps-script/Code.gs`): same checks (identical lists, enforced by a parity test), formula guard extended to leading tab/CR, body capped at 2000 characters, 20 RSVPs per minute via CacheService. 37 node:test tests GREEN (tests written first).
+- Pending: the owner pastes the new Code.gs and deploys a new version (Manage deployments → New version) so the URL stays the same. Until then only the page-side checks are live.
