@@ -1279,8 +1279,6 @@ ol {
   pointer-events: none;
 }
 
-.finale__bouquet--tl { top: 3.5rem;  left: -1.25rem; }
-.finale__bouquet--tr { top: 3.5rem;  right: -1.25rem; transform: scaleX(-1); }
 .finale__bouquet--bl { bottom: 1rem; left: -1.25rem; transform: scaleY(-1); }
 .finale__bouquet--br { bottom: 1rem; right: -1.25rem; transform: rotate(180deg); }
 
@@ -1475,6 +1473,13 @@ ol {
 
   .hero__date {
     margin-top: 0.75rem;
+  }
+
+  /* Smaller and lower, so the finale's corner flowers stay clear of the tap hint. */
+  .finale__bouquet {
+    width: 4.5rem;
+    height: 4.5rem;
+    bottom: 0.25rem;
   }
 }
 

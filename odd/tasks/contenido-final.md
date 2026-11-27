@@ -93,3 +93,4 @@ status: in-progress
 - Envelope: bouquets in two corners (they leave with the flaps), polka-dot lining, gold flap edge (drop-shadow on a wrapper because clip-path would cut it), bloom and daisy beside the seal, date under the hint.
 - Finale: navy night sky replaced by a low-saturation pastel sunset (cream with blush, butter and sky glows), bunting on top and bouquets in the four corners; text back to navy; fireworks and confetti use deeper palette tones so they show on the light sky.
 - Checked at 390×844 and 320×568: no errors, no horizontal overflow, finale content fits one screen.
+- Owner's phone showed the top finale bouquets covering "Te espero": removed both top bouquets. Bottom bouquets shrink on short screens (≤620 px tall). Overlap check (bouquet boxes vs title, signature, cake, monogram, hint) at 320×568, 360×800, 390×844, 412×915: no intersections, no horizontal overflow.
