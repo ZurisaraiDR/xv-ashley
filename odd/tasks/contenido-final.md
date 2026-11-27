@@ -70,3 +70,4 @@ status: in-progress
 
 - Family card no longer names aunts, uncles and cousins (owner's request); parents card longer and warmer. Checked at 360 px, no overflow.
 - Owner offered `C:\Users\Zuri\Desktop\imagenesInvitacion` (6 PNGs labelled copyright-free). All six depict Peanuts characters (Snoopy, Woodstock, Charlie Brown, Lucy); not added to the project.
+- Family card rewritten in a more formal register (no "echaron la mano"); statement replaced (parents did not like the "zapatos" line): "Hoy cumplo quince años y comienzo una nueva etapa, llevando conmigo cada recuerdo, cada enseñanza y todo el amor de quienes me han acompañado hasta aquí." Checked at 360 px, word highlight works, no overflow.
