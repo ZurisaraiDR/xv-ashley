@@ -647,11 +647,15 @@ ol {
 .polaroid--butter .polaroid__photo { background: var(--butter); }
 .polaroid--sky    .polaroid__photo { background: var(--sky-deep); }
 
+/* Portrait and landscape cut-outs both fit whole, standing on the bottom edge of the frame. */
 .polaroid__photo img {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: 92%;
+  width: auto;
+  height: auto;
+  max-width: 94%;
+  max-height: 94%;
   transform: translateX(-50%);
 }
 
