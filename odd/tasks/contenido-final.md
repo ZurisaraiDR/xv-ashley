@@ -94,3 +94,9 @@ status: in-progress
 - Finale: navy night sky replaced by a low-saturation pastel sunset (cream with blush, butter and sky glows), bunting on top and bouquets in the four corners; text back to navy; fireworks and confetti use deeper palette tones so they show on the light sky.
 - Checked at 390×844 and 320×568: no errors, no horizontal overflow, finale content fits one screen.
 - Owner's phone showed the top finale bouquets covering "Te espero": removed both top bouquets. Bottom bouquets shrink on short screens (≤620 px tall). Overlap check (bouquet boxes vs title, signature, cake, monogram, hint) at 320×568, 360×800, 390×844, 412×915: no intersections, no horizontal overflow.
+
+### 2026-11-26 — final changes
+
+- RSVP form no longer asks how many people come. Each "yes" counts the person confirming: `validateRsvp` sends `guests: 1` for a yes and 0 for a no (tests rewritten first, RED → GREEN, 25 passing). The deployed Apps Script still requires 1–5 guests for a yes, so it keeps working without a redeploy; the sheet's "Personas" column shows 1.
+- Gift reminder: original gift doodle; "¡No olvides tu regalo!" in the thank-you card (yes only) and "P. D. ¡No olvides tu regalo!" in the finale.
+- Scroll cues: "Desliza hacia abajo" with a bouncing chevron under the cover date, and a pill in the album ("Sigue bajando: las fotos avanzan solas") shown only while pinned and fading after 220 px. Short-screen breakpoint raised to 700 px so the cue fits the first screen: checked at 320×568, 360×640, 375×667, 412×915 and 740×360.

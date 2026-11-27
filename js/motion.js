@@ -139,6 +139,12 @@ function pinAlbumSideways(gsap) {
       invalidateOnRefresh: true,
     },
   });
+  // The "keep scrolling down" pill fades once the photos start moving: by then the guest got it.
+  gsap.to('[data-album-hint]', {
+    autoAlpha: 0,
+    ease: 'none',
+    scrollTrigger: { trigger: album, start: 'top top', end: '+=220', scrub: true },
+  });
 }
 
 /**
@@ -226,7 +232,7 @@ function revealFinale(gsap) {
     .fromTo('.closing__title',
       { clipPath: 'inset(-40% 100% -40% -15%)' },
       { clipPath: 'inset(-40% -15% -40% -15%)', duration: 1.4, ease: 'power2.inOut' })
-    .fromTo(['.closing__line', '.closing__sign', '.closing__party'],
+    .fromTo(['.closing__line', '.closing__sign', '.closing__party', '.finale__gift'],
       { y: 24, autoAlpha: 0 },
       { y: 0, autoAlpha: 1, stagger: 0.15, duration: 0.7, ease: 'power3.out' }, '-=0.6')
     .fromTo('.monogram',

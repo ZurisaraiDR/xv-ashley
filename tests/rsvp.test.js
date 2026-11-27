@@ -1,8 +1,8 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { validateRsvp, submitRsvp, MAX_GUESTS } from '../js/rsvp.js';
+import { validateRsvp, submitRsvp } from '../js/rsvp.js';
 
-const VALID_YES = { name: '  Tía Lupita  ', attending: 'si', guests: '3', message: ' ¡Ahí estaremos! ' };
+const VALID_YES = { name: '  Tía Lupita  ', attending: 'si', message: ' ¡Ahí estaremos! ' };
 
 test('accepts a complete yes and trims the text', () => {
   const result = validateRsvp(VALID_YES);
@@ -12,7 +12,7 @@ test('accepts a complete yes and trims the text', () => {
   assert.deepEqual(result.data, {
     name: 'Tía Lupita',
     attending: 'si',
-    guests: 3,
+    guests: 1,
     message: '¡Ahí estaremos!',
   });
 });
@@ -38,11 +38,11 @@ test('requires an answer to attending', () => {
   assert.ok(result.errors.attending);
 });
 
-test('a yes needs between 1 and MAX_GUESTS people', () => {
-  for (const guests of ['0', String(MAX_GUESTS + 1), 'dos', '']) {
+test('a yes always counts one guest: the person confirming', () => {
+  for (const guests of [undefined, '', '0', '4', 'dos']) {
     const result = validateRsvp({ ...VALID_YES, guests });
-    assert.equal(result.isValid, false, `guests "${guests}" should fail`);
-    assert.ok(result.errors.guests);
+    assert.equal(result.isValid, true, `guests "${guests}" should not matter`);
+    assert.equal(result.data.guests, 1);
   }
 });
 

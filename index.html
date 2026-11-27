@@ -88,6 +88,13 @@
       <path d="M19 26 7 52Q24 58 41 52L29 26Z" style="fill: var(--doodle-fill, var(--sky-deep))"/>
       <path d="M13 44Q24 48 35 44" fill="none"/>
     </symbol>
+    <symbol id="d-gift" viewBox="0 0 40 40">
+      <rect x="6.5" y="17" width="27" height="18" rx="1.5" style="fill: var(--doodle-fill, var(--blush))"/>
+      <rect x="4.5" y="11" width="31" height="7" rx="1.5" style="fill: var(--doodle-fill, var(--blush))"/>
+      <rect x="18" y="11" width="4" height="24" style="fill: var(--gold-soft)"/>
+      <path d="M20 11C15 3.5 7.5 4.5 9.5 8.8 11 11.6 17 11.8 20 11Z" style="fill: var(--gold-soft)"/>
+      <path d="M20 11C25 3.5 32.5 4.5 30.5 8.8 29 11.6 23 11.8 20 11Z" style="fill: var(--gold-soft)"/>
+    </symbol>
     <symbol id="d-pin" viewBox="0 0 40 48">
       <path d="M20 4C11 4 5 11 5 19 5 30 20 44 20 44S35 30 35 19C35 11 29 4 20 4Z" style="fill: var(--doodle-fill, var(--blush))"/>
       <circle cx="20" cy="19" r="5" style="fill: var(--paper)"/>
@@ -209,6 +216,7 @@
         <p class="hero__date" data-hero-item>
           <span>Sábado</span><span class="dot" aria-hidden="true"></span><span>19 · 12 · 2026</span><span class="dot" aria-hidden="true"></span><span>7:00 PM</span>
         </p>
+        <p class="scroll-hint" data-hero-item>Desliza hacia abajo <span class="scroll-hint__arrow" aria-hidden="true"></span></p>
       </div>
     </section>
 
@@ -228,6 +236,8 @@
       <div class="wrap album__head">
         <p class="kicker">Un pedacito de mi historia</p>
         <h2 class="section-title" id="album-title">Así crecí</h2>
+        <!-- Shown only while the album is pinned: guests tend to swipe sideways, but here you keep scrolling down. -->
+        <p class="album__hint" data-album-hint>Sigue bajando: las fotos avanzan solas <span class="scroll-hint__arrow" aria-hidden="true"></span></p>
       </div>
       <ol class="album__track" data-album-track>
         <li class="polaroid polaroid--blush">
@@ -412,18 +422,6 @@
             <p class="field__error" data-error-for="attending"></p>
           </fieldset>
 
-          <div class="field" data-guests-field>
-            <label for="rsvp-guests">¿Cuántas personas vienen, contándote?</label>
-            <select id="rsvp-guests" name="guests" aria-describedby="rsvp-guests-error">
-              <option value="1">1 persona</option>
-              <option value="2">2 personas</option>
-              <option value="3">3 personas</option>
-              <option value="4">4 personas</option>
-              <option value="5">5 personas</option>
-            </select>
-            <p class="field__error" id="rsvp-guests-error" data-error-for="guests"></p>
-          </div>
-
           <div class="field">
             <label for="rsvp-message">Un mensajito para Ashley <span class="optional">(opcional)</span></label>
             <textarea id="rsvp-message" name="message" rows="3" maxlength="300" aria-describedby="rsvp-message-error"></textarea>
@@ -444,6 +442,10 @@
           <svg class="doodle doodle--heart rsvp-done__heart" aria-hidden="true"><use href="#d-heart"/></svg>
           <p class="rsvp-done__title" data-rsvp-done-title>¡Gracias!</p>
           <p data-rsvp-done-text>Ya quedó tu confirmación.</p>
+          <p class="gift-note" data-rsvp-done-gift hidden>
+            <svg class="doodle gift-note__icon" aria-hidden="true"><use href="#d-gift"/></svg>
+            ¡No olvides tu regalo!
+          </p>
         </div>
       </div>
     </section>
@@ -478,6 +480,10 @@
           <img class="sticker closing__sticker" data-sticker src="assets/stickers/cierre.png" alt="" loading="lazy">
           <svg class="doodle doodle--cake closing__cake"><use href="#d-cake"/></svg>
         </div>
+        <p class="gift-note finale__gift">
+          <svg class="doodle gift-note__icon" aria-hidden="true"><use href="#d-gift"/></svg>
+          P. D. ¡No olvides tu regalo!
+        </p>
         <div class="monogram" aria-hidden="true"><span>A</span><small>XV</small></div>
         <p class="finale__hint">Toca la pantalla para lanzar fuegos artificiales</p>
       </div>

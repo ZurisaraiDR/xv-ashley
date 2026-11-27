@@ -1,4 +1,3 @@
-export const MAX_GUESTS = 5;
 const MIN_NAME_LENGTH = 2;
 const MAX_NAME_LENGTH = 80;
 const MAX_MESSAGE_LENGTH = 300;
@@ -17,9 +16,6 @@ export function validateRsvp(values) {
   }
   if (!ANSWERS.has(data.attending)) {
     errors.attending = 'Cuéntame si vas a poder venir.';
-  }
-  if (data.attending === 'si' && !isGuestCountValid(data.guests)) {
-    errors.guests = `Indica cuántas personas vienen (de 1 a ${MAX_GUESTS}).`;
   }
   if (data.message.length > MAX_MESSAGE_LENGTH) {
     errors.message = `Tu mensaje puede tener hasta ${MAX_MESSAGE_LENGTH} caracteres.`;
@@ -44,16 +40,9 @@ function normalize(values) {
   return {
     name: String(values.name ?? '').trim(),
     attending,
-    guests: attending === 'no' ? 0 : toInteger(values.guests),
+    // The form no longer asks how many come: each "yes" is the guest confirming. The deployed
+    // Apps Script still expects 1–5 guests for a yes, so the yes always sends 1.
+    guests: attending === 'si' ? 1 : 0,
     message: String(values.message ?? '').trim(),
   };
-}
-
-function toInteger(value) {
-  const text = String(value ?? '').trim();
-  return /^\d+$/.test(text) ? Number(text) : Number.NaN;
-}
-
-function isGuestCountValid(guests) {
-  return Number.isInteger(guests) && guests >= 1 && guests <= MAX_GUESTS;
 }

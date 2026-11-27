@@ -571,6 +571,33 @@ ol {
 .hero__d3 { position: absolute; bottom: 22%; left: 6%; }
 .hero__d4 { position: absolute; bottom: 12%; right: 10%; width: 1.5rem; height: 1.5rem; }
 
+/* "Scroll down" cue: the whole invitation moves with vertical scrolling, even the album. */
+.scroll-hint {
+  display: grid;
+  justify-items: center;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.scroll-hint__arrow {
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg);
+  animation: nudge-down 1.4s ease-in-out infinite;
+}
+
+@keyframes nudge-down {
+  50% { translate: 0 6px; }
+}
+
 /* ---------- Statement ---------- */
 
 .statement {
@@ -652,6 +679,25 @@ ol {
   scroll-snap-type: x mandatory;
   scroll-padding-inline: var(--gutter);
   scrollbar-width: none;
+}
+
+.album__hint {
+  display: none;
+  align-items: center;
+  gap: 0.6rem;
+  width: fit-content;
+  margin-top: 0.9rem;
+  padding: 0.45rem 1rem 0.55rem;
+  border-radius: 999px;
+  background: var(--paper);
+  box-shadow: 0 0 0 1.5px var(--ink);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.album.is-pinned .album__hint {
+  display: flex;
 }
 
 .album.is-pinned .album__track {
@@ -1344,6 +1390,31 @@ ol {
   letter-spacing: 0.2em;
 }
 
+/* ---------- Gift reminder (thank-you card and finale) ---------- */
+
+.gift-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  background: var(--butter);
+  box-shadow: 0 0 0 1.5px var(--ink);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.gift-note__icon {
+  width: 1.7rem;
+  height: 1.7rem;
+  flex-shrink: 0;
+}
+
+.finale__gift {
+  margin-top: 1.5rem;
+}
+
 /* ---------- Music toggle ---------- */
 
 .music-toggle {
@@ -1455,16 +1526,20 @@ ol {
   }
 }
 
-/* ---------- Short screens (small phones, phones turned sideways) ---------- */
+/* ---------- Short screens (≤700px tall: iPhone SE/8, small Androids, phones turned sideways) ---------- */
 
-@media (max-height: 620px) {
+@media (max-height: 700px) {
   .hero {
-    padding-block: 3.75rem 1.5rem;
+    padding-block: 3.5rem 1rem;
   }
 
   .hero__photo {
-    width: min(60vw, 15rem, 30svh);
-    margin-top: 1.5rem;
+    width: min(56vw, 14rem, 27svh);
+    margin-top: 1.25rem;
+  }
+
+  .scroll-hint {
+    margin-top: 0.75rem;
   }
 
   .hero__title {
