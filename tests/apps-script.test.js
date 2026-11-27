@@ -7,7 +7,7 @@ import vm from 'node:vm';
 // and only its pure functions are exercised here.
 const source = readFileSync(new URL('../apps-script/Code.gs', import.meta.url), 'utf8');
 const server = vm.runInNewContext(
-  `${source}\n;({ parseRsvp, toRow, sanitizeCell, BLOCKED_WORDS, BLOCKED_STEMS })`,
+  `${source}\n;({ parseRsvp, toRow, sanitizeCell, BLOCKED_WORDS, BLOCKED_STEMS, RULES_VERSION })`,
 );
 const { parseRsvp, toRow, sanitizeCell } = server;
 
@@ -83,4 +83,8 @@ test('the page and the server block exactly the same words', async () => {
   const page = await import('../js/moderation.js');
   assert.deepEqual([...server.BLOCKED_WORDS], [...page.BLOCKED_WORDS]);
   assert.deepEqual([...server.BLOCKED_STEMS], [...page.BLOCKED_STEMS]);
+});
+
+test('the server reports which rules version it runs', () => {
+  assert.equal(typeof server.RULES_VERSION, 'string');
 });

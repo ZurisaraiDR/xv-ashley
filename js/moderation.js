@@ -10,9 +10,13 @@ export const BLOCKED_WORDS = [
   'marica', 'maricon', 'maricona', 'pendejo', 'pendeja', 'chinga', 'chingada', 'chingar', 'chingon',
   'mamada', 'mamadas', 'mamon', 'mamona', 'mierda', 'caca', 'pedo', 'pedorro', 'sexo', 'porno', 'cabron',
   'cabrona', 'idiota', 'imbecil', 'estupido', 'estupida', 'puñeta', 'puñetas',
+  'tonta', 'tonto', 'tontas', 'tontos', 'mensa', 'menso', 'mensas', 'mensos', 'babosa', 'baboso', 'babosas',
+  'babosos', 'tarada', 'tarado', 'naca', 'naco', 'fea', 'feo', 'inutil', 'cerda', 'cerdo', 'puerca', 'puerco',
+  'bruta', 'bruto', 'retrasada', 'retrasado', 'mongol', 'mongola', 'subnormal',
   'ass', 'asshole', 'dick', 'cock', 'cum', 'tit', 'tits', 'boobs', 'penis', 'vagina', 'pussy', 'fuck', 'fucker',
   'shit', 'bullshit', 'bitch', 'slut', 'whore', 'cunt', 'fag', 'faggot', 'nigger', 'nigga', 'retard',
   'bastard', 'sex', 'porn', 'nazi', 'hitler', 'dildo', 'horny',
+  'stupid', 'dumb', 'idiot', 'moron', 'loser', 'ugly', 'dummy', 'jerk', 'sucker',
 ];
 
 // Searched anywhere, even across words: they are never part of an ordinary word.

@@ -31,3 +31,21 @@ test('lets real names and everyday words through', () => {
     assert.equal(findBlockedWord(text), null, `"${text}" should be allowed`);
   }
 });
+
+test('blocks common insults used as names or in messages, in Spanish and English', () => {
+  const insults = [
+    'Tonta', 'tonto', 'T0nta', 'Mensa', 'menso', 'Babosa', 'baboso', 'Tarada', 'Naca', 'Fea', 'feo',
+    'Inútil', 'Cerda', 'Puerca', 'Bruta', 'Retrasada', 'Estúpida', 'Idiota',
+    'stupid', 'dumb', 'idiot', 'moron', 'loser', 'ugly', 'dummy',
+    'no seas tonta',
+  ];
+  for (const text of insults) {
+    assert.ok(findBlockedWord(text), `"${text}" should be blocked`);
+  }
+});
+
+test('still lets through names that only look like an insult', () => {
+  for (const text of ['Tonatiuh', 'Menéndez', 'Bobadilla', 'Feodora', 'Tontines', 'Brutus', 'Dumbledore', 'Fermín']) {
+    assert.equal(findBlockedWord(text), null, `"${text}" should be allowed`);
+  }
+});

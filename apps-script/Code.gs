@@ -4,6 +4,8 @@
 // CacheService:  https://developers.google.com/apps-script/reference/cache/cache-service
 // Deploy steps:  apps-script/README.md
 
+// Shown by doGet, so the owner (and a test from the outside) can tell which rules are live.
+const RULES_VERSION = '2026-11-26 insultos';
 const SHEET_NAME = 'Confirmaciones';
 const HEADERS = ['Fecha', 'Nombre', '¿Asiste?', 'Personas', 'Mensaje'];
 const TIME_ZONE = 'America/Cancun';
@@ -31,9 +33,13 @@ const BLOCKED_WORDS = [
   'marica', 'maricon', 'maricona', 'pendejo', 'pendeja', 'chinga', 'chingada', 'chingar', 'chingon',
   'mamada', 'mamadas', 'mamon', 'mamona', 'mierda', 'caca', 'pedo', 'pedorro', 'sexo', 'porno', 'cabron',
   'cabrona', 'idiota', 'imbecil', 'estupido', 'estupida', 'puñeta', 'puñetas',
+  'tonta', 'tonto', 'tontas', 'tontos', 'mensa', 'menso', 'mensas', 'mensos', 'babosa', 'baboso', 'babosas',
+  'babosos', 'tarada', 'tarado', 'naca', 'naco', 'fea', 'feo', 'inutil', 'cerda', 'cerdo', 'puerca', 'puerco',
+  'bruta', 'bruto', 'retrasada', 'retrasado', 'mongol', 'mongola', 'subnormal',
   'ass', 'asshole', 'dick', 'cock', 'cum', 'tit', 'tits', 'boobs', 'penis', 'vagina', 'pussy', 'fuck', 'fucker',
   'shit', 'bullshit', 'bitch', 'slut', 'whore', 'cunt', 'fag', 'faggot', 'nigger', 'nigga', 'retard',
   'bastard', 'sex', 'porn', 'nazi', 'hitler', 'dildo', 'horny',
+  'stupid', 'dumb', 'idiot', 'moron', 'loser', 'ugly', 'dummy', 'jerk', 'sucker',
 ];
 const BLOCKED_STEMS = [
   'pendej', 'chingad', 'mierd', 'fuck', 'pussy', 'bitch', 'whore', 'motherf', 'cabron', 'culer', 'maricon',
@@ -55,7 +61,7 @@ function doPost(e) {
 
 /** Opening the /exec URL in a browser confirms the deployment works. */
 function doGet() {
-  return jsonResponse({ ok: true, message: 'Confirmaciones listas' });
+  return jsonResponse({ ok: true, message: 'Confirmaciones listas', version: RULES_VERSION });
 }
 
 function parseRsvp(params) {
