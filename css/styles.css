@@ -659,6 +659,28 @@ ol {
   transform: translateX(-50%);
 }
 
+/* Photos cut on the sides or top fill the whole frame, so no cut edge floats inside it.
+   --focus (set per photo) keeps the faces in view. */
+.polaroid__photo--fill img {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  transform: none;
+  object-fit: cover;
+  object-position: var(--focus, 50% 50%);
+}
+
+/* Landscape cut-outs cut on the right: as wide as the frame and pinned to its right and bottom edges. */
+.polaroid__photo--wide img {
+  left: auto;
+  right: 0;
+  width: 100%;
+  max-width: none;
+  transform: none;
+}
+
 .polaroid__finale {
   display: grid;
   place-content: center;
