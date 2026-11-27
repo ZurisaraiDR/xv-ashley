@@ -4,5 +4,5 @@
 
 1. [Invitación web: estructura, diseño y animaciones](tasks/invitacion-web.md) — done
 2. [Confirmaciones de asistencia en Google Sheets](tasks/rsvp-google-sheets.md) — done
-3. [Contenido final: foto de bebé, textos y clips](tasks/contenido-final.md) — in-progress
+3. [Contenido final: foto de bebé, textos y clips](tasks/contenido-final.md) — done
 4. [Publicación en internet](tasks/publicacion.md) — done

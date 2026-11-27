@@ -1,5 +1,5 @@
 ---
-status: in-progress
+status: done
 ---
 
 # Contenido final: foto de bebé, textos y clips
@@ -100,3 +100,9 @@ status: in-progress
 - RSVP form no longer asks how many people come. Each "yes" counts the person confirming: `validateRsvp` sends `guests: 1` for a yes and 0 for a no (tests rewritten first, RED → GREEN, 25 passing). The deployed Apps Script still requires 1–5 guests for a yes, so it keeps working without a redeploy; the sheet's "Personas" column shows 1.
 - Gift reminder: original gift doodle; "¡No olvides tu regalo!" in the thank-you card (yes only) and "P. D. ¡No olvides tu regalo!" in the finale.
 - Scroll cues: "Desliza hacia abajo" with a bouncing chevron under the cover date, and a pill in the album ("Sigue bajando: las fotos avanzan solas") shown only while pinned and fading after 220 px. Short-screen breakpoint raised to 700 px so the cue fits the first screen: checked at 320×568, 360×640, 375×667, 412×915 and 740×360.
+
+### 2026-11-26 — closed
+
+- Owner called these the final changes. Live at https://zurisaraidr.github.io/xv-ashley/ (deploy `fba3ad8`): no guest-count field, gift reminders, scroll cues.
+- Optional, left to the owner: their own files in the three sticker slots (`assets/stickers/`), music changes via `tools/piano_waltz.py`.
+- All four objectives are done; nothing pending in the index.
