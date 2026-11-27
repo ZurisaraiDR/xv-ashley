@@ -86,3 +86,10 @@ status: in-progress
 - Polaroid images now fit whole in any orientation (max-width/max-height 94%, bottom-anchored). Verified at 375 and 320: 13 cards, 0 broken, none outside its frame, last card reachable, no horizontal overflow.
 - Owner feedback: cut edges looked bad. Removed `sombrero-cafe` and `abrazo`; family photo moved to the end (before "15"). Measured which edges each cut-out touches: whole figures and bottom-only cuts stay bottom-anchored; `con-mama` (cut right) pinned to the right/bottom edges (`polaroid__photo--wide`); the two selfies and `paz` (cut on sides/top) fill the frame (`polaroid__photo--fill`, object-fit cover with a per-photo `--focus`). Checked every card at 375 px: 10 photos + "15", none broken, last card reachable, no horizontal overflow.
 - Pink blouse photo removed at the owner's request. Album: 9 photos + "15"; checked at 375 px (none broken, last card reachable, no overflow).
+
+### 2026-11-26 — flowers, envelope and pastel finale
+
+- Original hand-drawn flowers added to the sprite (five-petal bloom, daisy, leafy sprig, bouquet) with a new `--leaf` sage token.
+- Envelope: bouquets in two corners (they leave with the flaps), polka-dot lining, gold flap edge (drop-shadow on a wrapper because clip-path would cut it), bloom and daisy beside the seal, date under the hint.
+- Finale: navy night sky replaced by a low-saturation pastel sunset (cream with blush, butter and sky glows), bunting on top and bouquets in the four corners; text back to navy; fireworks and confetti use deeper palette tones so they show on the light sky.
+- Checked at 390×844 and 320×568: no errors, no horizontal overflow, finale content fits one screen.

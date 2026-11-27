@@ -15,6 +15,7 @@
   --butter: #f7ecca;
   --gold: #c9a14a;
   --gold-soft: #ecdaa8;
+  --leaf: #cfdcc0;   /* soft sage for the flower leaves */
   --gold-ink: #7d5a17; /* gold that still reads as small text on paper, sky and blush (≥4.9:1) */
 
   --font-display: 'Great Vibes', cursive;
@@ -258,10 +259,20 @@ ol {
 
 .intro__panel--top {
   top: 0;
-  /* The envelope flap: a soft point toward the seal. */
-  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
-  background: var(--sky-deep);
   z-index: 1;
+  background: none;
+  /* The gold edge of the flap: a shadow on the wrapper, because clip-path on the same element would cut it off. */
+  filter: drop-shadow(0 3px 0 var(--gold));
+}
+
+/* The envelope flap: a soft point toward the seal. */
+.intro__flap {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 100% 0, 100% 78%, 50% 100%, 0 78%);
+  background:
+    radial-gradient(rgb(255 255 255 / 0.35) 1.4px, transparent 1.6px) 0 0 / 20px 20px,
+    var(--sky-deep);
 }
 
 .intro__panel--bottom {
@@ -269,6 +280,50 @@ ol {
   top: 30%;
   bottom: 0;
   height: auto;
+  /* Envelope lining: a quiet polka-dot paper. */
+  background:
+    radial-gradient(rgb(255 255 255 / 0.6) 1.6px, transparent 1.8px) 0 0 / 22px 22px,
+    var(--sky);
+}
+
+.intro__bouquet {
+  position: absolute;
+  width: clamp(8rem, 38vw, 12rem);
+  height: clamp(8rem, 38vw, 12rem);
+}
+
+.intro__bouquet--top {
+  top: -0.5rem;
+  left: -0.75rem;
+}
+
+.intro__bouquet--bottom {
+  right: -0.75rem;
+  bottom: -0.5rem;
+  transform: rotate(180deg);
+}
+
+.intro__seal-row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.intro__bloom {
+  width: 2.6rem;
+  height: 2.6rem;
+  margin-top: 0.5rem;
+}
+
+.intro__bloom--right {
+  width: 2.3rem;
+  height: 2.3rem;
+}
+
+.intro__date {
+  font-size: 0.95rem;
+  letter-spacing: 0.24em;
+  color: var(--gold-ink);
 }
 
 .intro__content {
@@ -1138,17 +1193,20 @@ ol {
 
 /* ---------- Closing ---------- */
 
-/* Grand finale: a night sky that the fireworks canvas lights up. */
+/* Grand finale: a soft pastel sunset (low saturation) with flowers in every corner. */
 .closing {
-  /* Doodles in this section are drawn with --ink: on the night sky they turn gold. */
-  --ink: #ecdaa8;
   position: relative;
   display: grid;
   align-items: center;
   min-height: 100svh;
   padding-block: var(--section-space) calc(6rem + var(--header-safe));
-  background: radial-gradient(ellipse at 50% 0%, #2c4370 0%, #1d2b4a 55%, #141f37 100%);
-  color: var(--paper);
+  background:
+    radial-gradient(circle at 12% 12%, rgb(246 222 220 / 0.95), transparent 45%),
+    radial-gradient(circle at 88% 18%, rgb(247 236 202 / 0.9), transparent 42%),
+    radial-gradient(circle at 80% 92%, rgb(219 233 246 / 0.95), transparent 48%),
+    radial-gradient(circle at 15% 88%, rgb(236 218 168 / 0.6), transparent 40%),
+    var(--paper);
+  color: var(--ink);
   text-align: center;
   overflow-x: clip;
   touch-action: manipulation;
@@ -1175,7 +1233,7 @@ ol {
   width: 3px;
   height: 3px;
   border-radius: 50%;
-  background: #fff8e6;
+  background: var(--gold);
   animation: twinkle 2.6s ease-in-out infinite;
 }
 
@@ -1198,9 +1256,33 @@ ol {
   margin-top: 2rem;
   font-size: 0.95rem;
   letter-spacing: 0.04em;
-  color: var(--sky);
+  color: var(--ink-soft);
   opacity: 0.85;
 }
+
+.finale__garland {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: min(100%, 36rem);
+  height: auto;
+  transform: translateX(-50%);
+  stroke: var(--ink);
+  stroke-width: 1.8;
+  stroke-linejoin: round;
+}
+
+.finale__bouquet {
+  position: absolute;
+  width: clamp(7rem, 32vw, 11rem);
+  height: clamp(7rem, 32vw, 11rem);
+  pointer-events: none;
+}
+
+.finale__bouquet--tl { top: 3.5rem;  left: -1.25rem; }
+.finale__bouquet--tr { top: 3.5rem;  right: -1.25rem; transform: scaleX(-1); }
+.finale__bouquet--bl { bottom: 1rem; left: -1.25rem; transform: scaleY(-1); }
+.finale__bouquet--br { bottom: 1rem; right: -1.25rem; transform: rotate(180deg); }
 
 .closing__title {
   font-family: var(--font-display);
@@ -1208,12 +1290,12 @@ ol {
   font-size: clamp(4.5rem, 22vw, 7.5rem);
   line-height: 1.2;
   padding-inline: 0.1em;
-  color: var(--gold-soft);
+  color: var(--ink);
 }
 
 .closing__line {
   margin-top: 1rem;
-  color: var(--sky);
+  color: var(--ink-soft);
 }
 
 .closing__sign {
@@ -1249,7 +1331,7 @@ ol {
   margin-top: 2.5rem;
   border: 1.5px solid var(--gold);
   border-radius: 50%;
-  color: var(--gold-soft);
+  color: var(--gold-ink);
   font-family: var(--font-display);
   line-height: 1;
 }

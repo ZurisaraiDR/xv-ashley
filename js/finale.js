@@ -3,8 +3,9 @@
 // IntersectionObs.: https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 import { createBurst, createConfettiCannon, stepParticles } from './particles.js';
 
-const FIREWORK_COLORS = ['#ecdaa8', '#f6dedc', '#a9c8ea', '#f7ecca', '#ffffff'];
-const CONFETTI_COLORS = ['#ecdaa8', '#f6dedc', '#a9c8ea', '#f7ecca', '#c9a14a'];
+// Deeper tones of the invitation's palette: the light pastels would vanish on the pastel sky.
+const FIREWORK_COLORS = ['#c9a14a', '#e48aa0', '#6f9fd6', '#e9a86f', '#d98aa6'];
+const CONFETTI_COLORS = ['#c9a14a', '#e48aa0', '#6f9fd6', '#a9c8ea', '#f2c46b'];
 const SPARKS_PER_BURST = 46;
 const CONFETTI_PER_CANNON = 70;
 const MAX_PARTICLES = 900;               // keeps older phones smooth
