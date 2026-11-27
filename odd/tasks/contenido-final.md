@@ -65,3 +65,8 @@ status: in-progress
 - Owner found the waltz too high-pitched (headache). Transposed a fifth down (B-flat major), warmer partials (1/n², faster upper decay), gentle FFT low-pass at 3 kHz. Spectral centroid 1080 Hz → 600 Hz; energy above 2 kHz 8.0 % → 0.3 %; no clipping. Plays in the browser (90.6 s).
 - Still uncomfortable for the owner: melody an octave below written (E4–G5), bass lifted an octave for phone speakers, tempo 76 bpm, only two short early echoes (no long tail), peak 0.42, and `audio.volume = 0.5` (ignored on iOS, hence the quieter render). Centroid 455 Hz, energy above 2 kHz 0.1 %, 99.8 s. Plays in the browser at volume 0.5.
 - "Más alegre": 92 bpm, borrowed B-flat minor replaced by B-flat major, eighth-note pairs in the melody, staccato chords on beats 2–3, lighter ritardando. Same register and filter: centroid 464 Hz, energy above 2 kHz 0.1 %, 82.5 s, no clipping. Plays in the browser at volume 0.5.
+
+### 2026-11-26 — texts and image folder
+
+- Family card no longer names aunts, uncles and cousins (owner's request); parents card longer and warmer. Checked at 360 px, no overflow.
+- Owner offered `C:\Users\Zuri\Desktop\imagenesInvitacion` (6 PNGs labelled copyright-free). All six depict Peanuts characters (Snoopy, Woodstock, Charlie Brown, Lucy); not added to the project.
