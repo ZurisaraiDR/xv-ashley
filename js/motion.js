@@ -29,7 +29,7 @@ export function createMotion() {
   drawRouteToPin(gsap);
   peekStickerOverForm(gsap);
   swingDress(gsap);
-  celebrateAtTheEnd(gsap, ScrollTrigger);
+  revealFinale(gsap);
 
   return {
     openInvitation: (intro) => openInvitation(gsap, intro),
@@ -217,15 +217,22 @@ function swingDress(gsap) {
   });
 }
 
-/** One confetti burst around the closing sticker and cake when the guest reaches the end. */
-function celebrateAtTheEnd(gsap, ScrollTrigger) {
-  const party = document.querySelector('[data-closing-party]');
-  ScrollTrigger.create({
-    trigger: party,
-    start: 'top 85%',
-    once: true,
-    onEnter: () => burstDoodles(gsap, party),
-  });
+/**
+ * Grand finale entrance (the fireworks themselves live in js/finale.js): "Te espero" is written
+ * left to right in gold, the signature lines rise in, and the monogram spins into place.
+ */
+function revealFinale(gsap) {
+  gsap.timeline({ scrollTrigger: { trigger: '.closing', start: 'top 60%', toggleActions: 'play none none reverse' } })
+    .fromTo('.closing__title',
+      { clipPath: 'inset(-40% 100% -40% -15%)' },
+      { clipPath: 'inset(-40% -15% -40% -15%)', duration: 1.4, ease: 'power2.inOut' })
+    .fromTo(['.closing__line', '.closing__sign', '.closing__party'],
+      { y: 24, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, stagger: 0.15, duration: 0.7, ease: 'power3.out' }, '-=0.6')
+    .fromTo('.monogram',
+      { scale: 0, rotate: -180 },
+      { scale: 1, rotate: 0, duration: 1, ease: 'back.out(1.6)' }, '-=0.3')
+    .fromTo('.finale__hint', { autoAlpha: 0 }, { autoAlpha: 0.85, duration: 0.6 });
 }
 
 /** A small burst of sparkles and hearts around a target; its first doodle pops in. */

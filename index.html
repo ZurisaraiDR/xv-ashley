@@ -370,9 +370,11 @@
       </div>
     </section>
 
-    <section class="closing" aria-labelledby="closing-title">
-      <div class="confetti" aria-hidden="true">
-        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <!-- Grand finale: night sky, fireworks and confetti on a canvas (js/finale.js); tap to launch more. -->
+    <section class="closing" id="final" aria-labelledby="closing-title" data-finale>
+      <canvas class="finale__canvas" data-finale-canvas aria-hidden="true"></canvas>
+      <div class="finale__stars" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
       </div>
       <div class="wrap">
         <svg class="doodle doodle--note closing__n1" aria-hidden="true"><use href="#d-note"/></svg>
@@ -385,6 +387,7 @@
           <svg class="doodle doodle--cake closing__cake"><use href="#d-cake"/></svg>
         </div>
         <div class="monogram" aria-hidden="true"><span>A</span><small>XV</small></div>
+        <p class="finale__hint">Toca la pantalla para lanzar fuegos artificiales</p>
       </div>
     </section>
   </main>

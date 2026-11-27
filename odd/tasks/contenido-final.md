@@ -72,3 +72,9 @@ status: in-progress
 - Owner offered `C:\Users\Zuri\Desktop\imagenesInvitacion` (6 PNGs labelled copyright-free). All six depict Peanuts characters (Snoopy, Woodstock, Charlie Brown, Lucy); not added to the project.
 - Family card rewritten in a more formal register (no "echaron la mano"); statement replaced (parents did not like the "zapatos" line): "Hoy cumplo quince años y comienzo una nueva etapa, llevando conmigo cada recuerdo, cada enseñanza y todo el amor de quienes me han acompañado hasta aquí." Checked at 360 px, word highlight works, no overflow.
 - Parents card: added thanks for their time, dedication and effort in making the celebration happen. Checked at 360 px.
+
+### 2026-11-26 — grand finale
+
+- Closing turned into a night-sky finale: `js/particles.js` (pure physics: bursts, confetti cannons, gravity/drag/fade scaled by dt; 5 node:test tests written first, 25 total GREEN) and `js/finale.js` (canvas, DPR ≤ 2, ≤ 900 particles, rAF loop only while the section is ≥35 % visible). Grand opening (two cannons + four bursts), a firework every 1.5 s, and one wherever the guest taps.
+- GSAP `revealFinale`: "Te espero" written left to right in gold, signature rises in, monogram spins in, tap hint fades in. Old closing doodle burst removed.
+- Checked at 390×844 and 320×568: canvas draws (15k lit pixels), no errors, no horizontal overflow, content fits one screen.

@@ -4,6 +4,7 @@ import { downloadIcsEvent } from './calendar.js';
 import { setupRsvpForm } from './rsvp-form.js';
 import { createMotion } from './motion.js';
 import { setupMusic } from './music.js';
+import { setupFinale } from './finale.js';
 
 const motion = createMotion();
 const music = setupMusic(document.querySelector('[data-music]'), document.querySelector('[data-music-toggle]'));
@@ -14,6 +15,7 @@ startCountdown(document.querySelector('[data-countdown]'), Date.parse(PARTY.star
 setupCalendarButton();
 setupRsvpForm(document.querySelector('[data-rsvp-form]'), RSVP_ENDPOINT, motion);
 setupFloatingCta();
+setupFinale(document.querySelector('[data-finale]'));
 
 /** A sticker slot whose image file is not in assets/stickers/ yet leaves no broken icon behind. */
 function removeMissingStickers() {
